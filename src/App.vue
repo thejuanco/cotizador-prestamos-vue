@@ -1,30 +1,40 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+  import { ref, reactive } from 'vue';
+  import Header from './components/Header.vue';
+
+  const cantidad = ref(10000)
+  // const state = reactive({
+  //   cantidad: 0
+  // })
+  const MIN = 0;
+  const MAX = 20000;
+  const STEP = 100;
+
+  //Sintaxis para options api
+  // export default{
+  //   components: {
+  //     Header
+  //   },
+  // }
 </script>
 
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="my-20 max-w-lg mx-auto bg-white shadow p-10 rounded-lg">
+    <Header/>
+
+    <div class="my-5">
+      <input
+        class="w-full bg-gray-200 accent-indigo-600 hover:accent-indigo-700"
+        type="range"
+        :min="MIN"
+        :max="MAX"
+        :step="STEP"
+        v-model.number="cantidad"
+      />
+
+      <p>{{cantidad}}</p>
+      <!-- <p v-text="`$ ${cantidad}`"></p> -->
+    </div>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
