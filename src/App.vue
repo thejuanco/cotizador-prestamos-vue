@@ -16,13 +16,6 @@
   //     Header
   //   },
   // }
-
-  function handleChange(e){
-    //modificando el state
-    // state.cantidad = Number(e.target.value);
-
-    cantidad.value = Number(e.target.value);
-  }
 </script>
 
 <template>
@@ -36,8 +29,7 @@
         :min="MIN"
         :max="MAX"
         :step="STEP"
-        :value="cantidad"
-        @input="handleChange"
+        v-model.number="cantidad"
       />
 
       <p>{{cantidad}}</p>
