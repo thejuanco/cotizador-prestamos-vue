@@ -10,6 +10,7 @@
   const MIN = 0;
   const MAX = 20000;
   const STEP = 100;
+  const meses = ref(6)
 
   //Sintaxis para options api
   // export default{
@@ -76,6 +77,19 @@
 
       <p class="text-center my-10 text-5xl font-extrabold text-indigo-600">{{formatearDinero}}</p>
       <!-- <p v-text="`$ ${cantidad}`"></p> -->
+
+      <h2 class="text-2xl font-extrabold text-gray-500 text-center">
+        Elige un <span class="text-indigo-600">Plazo</span> a pagar
+      </h2>
+
+      <select class="w-full p-2 bg-white border border-gray-300 rounded-lg text-center text-xl font-bold text-gray-500 mt-5"
+        :value="meses"
+        v-model.number="meses"
+      >
+        <option value="6">6 meses</option>
+        <option value="12">12 meses</option>
+        <option value="24">24 meses</option>
+      </select>
     </div>
   </div>
 </template>
