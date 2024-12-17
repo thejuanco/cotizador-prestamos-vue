@@ -20,6 +20,9 @@
   //     Header
   //   },
   // }
+  const pagoMensual = computed(() => {
+    return total.value / meses.value;
+  })
 
   const formatearDinero = (valor) => {
     const formatter = new Intl.NumberFormat('en-US', {
@@ -104,7 +107,7 @@
 
         <p class="text-xl text-gray-500 text-center font-bold">{{meses}} Meses</p>
         <p class="text-xl text-gray-500 text-center font-bold">Total a pagar: {{formatearDinero(total)}}</p>
-        <p class="text-xl text-gray-500 text-center font-bold">Mensuales:</p>
+        <p class="text-xl text-gray-500 text-center font-bold">Mensuales: {{formatearDinero(pagoMensual)}}</p>
       </div>
 
       <p v-else class="text-center mt-2 text-gray-600">Selecciona una cantidad y un plazo</p>
