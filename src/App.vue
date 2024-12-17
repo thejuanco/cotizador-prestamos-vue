@@ -21,7 +21,7 @@
   //   },
   // }
 
-  const formatearDinero = computed(() => {
+  const formatearDinero = (valor) => {
     const formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
@@ -29,8 +29,8 @@
       maximumFractionDigits: 2
     })
 
-    return formatter.format(cantidad.value) //Retorna la cantidad
-  })
+    return formatter.format(valor) //Retorna la cantidad
+  }
 
   const handleChangeDecremento = () => {
     const valor = cantidad.value - STEP;
@@ -77,7 +77,7 @@
         v-model.number="cantidad"
       />
 
-      <p class="text-center my-10 text-5xl font-extrabold text-indigo-600">{{formatearDinero}}</p>
+      <p class="text-center my-10 text-5xl font-extrabold text-indigo-600">{{formatearDinero(cantidad)}}</p>
       <!-- <p v-text="`$ ${cantidad}`"></p> -->
 
       <h2 class="text-2xl font-extrabold text-gray-500 text-center">
@@ -99,7 +99,7 @@
         </h2>
 
         <p class="text-xl text-gray-500 text-center font-bold">{{meses}} Meses</p>
-        <p class="text-xl text-gray-500 text-center font-bold">Total a pagar: {{total}}</p>
+        <p class="text-xl text-gray-500 text-center font-bold">Total a pagar: {{formatearDinero(total)}}</p>
         <p class="text-xl text-gray-500 text-center font-bold">Mensuales:</p>
       </div>
     </div>
