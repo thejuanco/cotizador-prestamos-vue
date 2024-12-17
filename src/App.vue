@@ -1,5 +1,5 @@
 <script setup>
-  import { ref, reactive } from 'vue';
+  import { ref, reactive, computed } from 'vue';
   import Header from './components/Header.vue';
 
   const cantidad = ref(10000)
@@ -16,6 +16,17 @@
   //     Header
   //   },
   // }
+
+  const formatearDinero = computed(() => {
+    const formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    })
+
+    return formatter.format(cantidad.value) //Retorna la cantidad
+  })
 </script>
 
 <template>
@@ -32,7 +43,7 @@
         v-model.number="cantidad"
       />
 
-      <p>{{cantidad}}</p>
+      <p class="text-center my-10 text-5xl font-extrabold text-indigo-600">{{formatearDinero}}</p>
       <!-- <p v-text="`$ ${cantidad}`"></p> -->
     </div>
   </div>
